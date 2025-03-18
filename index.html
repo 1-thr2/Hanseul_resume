@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김한슬 | HR 포트폴리오</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b5cb8;            /* 주요 브랜드 색상 */
+            --primary-light: #edf1fc;      /* 밝은 버전 */
+            --primary-dark: #2a4494;       /* 어두운 버전 */
+            --secondary: #38a3a5;          /* 보조 색상 */
+            --secondary-light: #e7f5f5;    /* 밝은 버전 */
+            --accent: #ff8c42;             /* 강조 색상 */
+            --accent-light: #fff3ea;       /* 밝은 강조 색상 */
+            --light-bg: #f8f9fa;           /* 배경색 */
+            --dark-text: #2d3748;          /* 주요 텍스트 */
+            --medium-text: #4a5568;        /* 중간 강조 텍스트 */
+            --light-text: #718096;         /* 보조 텍스트 */
+            --border: #e2e8f0;             /* 경계선 */
+            --success: #2f855a;            /* 성공 색상 */
+            --success-light: #e6fffa;      /* 밝은 성공 색상 */
+            --radius: 8px;                 /* 기본 둥근 모서리 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1); /* 그림자 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .resume-container {
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        /* 헤더 섹션 */
+        .resume-header {
+            padding: 40px;
+            background-color: var(--primary);
+            color: white;
+            position: relative;
+        }
+
+        .resume-header-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .profile-tagline {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            max-width: 600px;
+        }
+
+        .header-details {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .header-detail-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-detail-icon {
+            margin-right: 8px;
+            opacity: 0.9;
+        }
+
+        /* 페이지 내비게이션 */
+        .page-nav {
+            background-color: white;
+            padding: 15px 40px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            font-weight: 500;
+            color: var(--medium-text);
+            text-decoration: none;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        /* 본문 섹션 */
+        .content-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .section-icon {
+            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        /* 소개 섹션 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .intro-card {
+            background-color: var(--primary-light);
+            border-radius: var(--radius);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .intro-card p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 140px;
+            height: 140px;
+            background-color: rgba(59, 92, 184, 0.1);
+            border-radius: 50%;
+        }
+
+        /* 핵심 역량 그리드 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--primary);
+            height: 100%;
+        }
+
+        .skill-icon {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .skill-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        .skill-description {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+
+        .skill-level {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .skill-level-bar {
+            flex: 1;
+            height: 6px;
+            background-color: var(--primary-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-level-fill {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        .skill-level-text {
+            width: 45px;
+            text-align: right;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+
+        /* 경력 섹션 */
+        .career-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .career-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .career-title-block {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .company-description {
+            color: var(--medium-text);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .position-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .career-date {
+            font-size: 14px;
+            color: var(--light-text);
+            background-color: var(--primary-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            height: fit-content;
+            font-weight: 500;
+        }
+
+        .career-content {
+            margin-top: 20px;
+        }
+
+        .career-summary {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-light);
+        }
+
+        .key-achievements {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .key-achievements-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .key-achievements-icon {
+            margin-right: 8px;
+        }
+
+        .achievement-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .achievement-item {
+            position: relative;
+            padding-left: 25px;
+            font-size: 14px;
+        }
+
+        .achievement-item::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* 프로젝트 섹션 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--border);
+        }
+
+        .project-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .project-date {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .project-body {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+        }
+
+        .project-results {
+            background-color: var(--success-light);
+            color: var(--success);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 15px;
+        }
+
+        .project-results-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-results-icon {
+            margin-right: 8px;
+        }
+
+        .project-metrics {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-metric {
+            flex: 1;
+            background-color: white;
+            padding: 10px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .project-metric-label {
+            font-size: 12px;
+            color: var(--medium-text);
+        }
+
+        /* 전문지식 섹션 */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .knowledge-category {
+            margin-bottom: 30px;
+        }
+
+        .knowledge-category-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--primary-light);
+        }
+
+        .knowledge-list {
+            list-style: none;
+        }
+
+        .knowledge-item {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .knowledge-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* HR 철학 섹션 */
+        .philosophy-section {
+            background-color: var(--primary-light);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-section::before {
+            content: '❝';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 150px;
+            color: rgba(59, 92, 184, 0.1);
+        }
+
+        .philosophy-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .model-chart {
+            display: flex;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .model-segment {
+            padding: 20px 10px;
+            position: relative;
+        }
+
+        .model-segment:nth-child(1),
+        .model-segment:nth-child(2) {
+            background-color: rgba(59, 92, 184, 0.2);
+            color: var(--primary-dark);
+            width: 15%;
+        }
+
+        .model-segment:nth-child(3) {
+            background-color: rgba(59, 92, 184, 0.3);
+            color: white;
+            width: 70%;
+        }
+
+        .model-percentage {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .model-role {
+            font-size: 14px;
+        }
+
+        /* 학력 및 자격증 섹션 */
+        .education-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .education-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .education-subtitle {
+            color: var(--medium-text);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .education-date {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        /* 푸터 */
+        .resume-footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-link-icon {
+            margin-right: 8px;
+        }
+
+        /* 모바일 대응 */
+        @media (max-width: 900px) {
+            .resume-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-details {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-list {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+        }
+
+        /* 인쇄 스타일 */
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .page-container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                margin-bottom: 0;
+            }
+
+            .page-nav {
+                display: none;
+            }
+
+            .career-item, .project-card, .education-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="resume-container">
+            <!-- 헤더 -->
+            <header class="resume-header">
+                <div class="resume-header-content">
+                    <img src="https://via.placeholder.com/140" alt="김한슬 프로필" class="profile-image">
+                    <div class="header-text">
+                        <h1 class="profile-name">김한슬</h1>
+                        <div class="profile-title">HR Business Partner & Talent Strategist</div>
+                        <p class="profile-tagline">
+                            다양성의 가치를 인정하고 조직과 구성원의 조화로운 성장을 추구하는 HR generalist입니다.
+                            성장 단계별 적합한 인사 전략 수립과 실행을 통해 비즈니스 임팩트를 창출합니다.
+                        </p>
+                        <div class="header-details">
+                            <div class="header-detail-item">
+                                <span class="header-detail-icon">✉️</span>
+                                staur0301@naver.com
+                            </div>
+                            <div class="header-detail-item">
+                                <span class="header-detail-icon">📱</span>
+                                +82-10-8370-1995
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 내비게이션 -->
+            <nav class="page-nav">
+                <a href="#about" class="nav-item active">소개</a>
+                <a href="#career" class="nav-item">경력</a>
+                <a href="#projects" class="nav-item">주요 프로젝트</a>
+                <a href="#expertise" class="nav-item">전문 지식</a>
+                <a href="#education" class="nav-item">학력</a>
+            </nav>
+
+            <!-- 소개 섹션 -->
+            <section id="about" class="content-section">
+                <h2 class="section-title">
+                    <span class="section-icon">👋</span>
+                    소개
+                </h2>
+
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>HR generalist로서의 성장 여정</h3>
+                        <p>
+                            10명 남짓한 작은 스타트업에 합류해 63명 규모로 성장시키고, 다시 30명으로 축소되는 과정을 경험하며 조직과 사람에 대해 깊이 이해하게 되었습니다. 이 과정에서 효과적인 HR 시스템의
+                            중요성과 변화 관리의 방법을 실전에서 학습했습니다.
+                        </p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>인재와 조직에 대한 관점</h3>
+                        <p>
+                            처음에는 "뛰어난 문제 해결자들만 뽑으면 된다"고 믿었습니다만, 경험을 통해 조직이 모두 똑같은 역할을 할 때가 아니라, 다양한 역할이 조화를 이룰 때 진정으로 강해진다는 것을 깨달았습니다.
+                            조직의 목표와 개인의 성장이 함께 가는 균형점을 찾는 것이 HR의 핵심 역할이라고 생각합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">
+                    <span class="section-icon">💪</span>
+                    핵심 역량
+                </h3>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🔍</div>
+                        <div class="skill-title">전략적 인재 확보</div>
+                        <p class="skill-description">
+                            성장 단계와 조직 문화에 적합한 인재상을 정의하고, Direct Sourcing을 통해 다양한 직군의 인재를 발굴합니다. 빠르게 성장하는 조직에서 98명의 인재를 채용한 경험이 있습니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="skill-level-text">85%</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🌱</div>
+                        <div class="skill-title">온보딩 및 조직문화 구축</div>
+                        <p class="skill-description">
+                            신규 입사자의 빠른 적응과 몰입을 위한 체계적인 온보딩 프로그램 설계와 조직의 가치와 비전이 공유되는 문화 형성에 주력합니다. 개발팀 리빌딩 후 리텐션 100% 달성 경험이 있습니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 80%"></div>
+                            </div>
+                            <div class="skill-level-text">80%</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <div class="skill-title">성과 관리 및 평가</div>
+                        <p class="skill-description">
+                            조직 목표와 연계된 개인 성과 지표 수립과 공정한 평가 체계를 설계하여 구성원의 성장과 조직의 발전을 촉진합니다. 다양한 역할에 맞는 평가 체계 설계 경험이 있습니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="skill-level-text">75%</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🔄</div>
+                        <div class="skill-title">변화 관리</div>
+                        <p class="skill-description">
+                            조직의 성장과 축소 과정에서 발생하는 변화를 효과적으로 관리하고, 구성원들이 불확실성을 극복하도록 지원합니다. 30명 규모 조직 리빌딩 경험이 있습니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 70%"></div>
+                            </div>
+                            <div class="skill-level-text">70%</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">📝</div>
+                        <div class="skill-title">인사 제도 설계</div>
+                        <p class="skill-description">
+                            조직의 단계와 특성에 맞는 보상, 복리후생, 휴가 등 인사 제도를 설계하고 실행하여 구성원의 만족도와 조직 몰입도를 높입니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="skill-level-text">65%</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">⚖️</div>
+                        <div class="skill-title">노무 관리</div>
+                        <p class="skill-description">
+                            노동법규 준수와 건전한 노사관계 구축을 통해 법적 리스크를 최소화하고 안정적인 조직 운영을 지원합니다. 취업규칙 개정, 노사협의회 운영 경험이 있습니다.
+                        </p>
+                        <div class="skill-level">
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 60%"></div>
+                            </div>
+                            <div class="skill-level-text">60%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 경력 섹션 -->
+            <section id="career" class="content-section">
+                <h2 class="section-title">
+                    <span class="section-icon">💼</span>
+                    경력
+                </h2>
+
+                <div class="career-item">
+                    <div class="career-header">
+                        <div class="company-logo">M</div>
+                        <div class="career-title-block">
+                            <div class="company-name">모비데이즈</div>
+                            <div class="company-description">마케팅 대행사 | 180명 규모</div>
+                            <div class="position-title">HRBP, CEO Office</div>
+                        </div>
+                        <div class="career-date">2024.12 ~ 현재</div>
+                    </div>
+                    <div class="career-content">
+                        <div class="career-summary">
+                            180명 규모의 마케팅 대행사에서 HRBP로서 조직 진단, 채용 전략 수립 및 인사 프로세스 개선 등 사업 성장을 위한 전략적 인사 업무를 담당하고 있습니다.
+                        </div>
+                        <div class="key-achievements">
+                            <div class="key-achievements-title">
+                                <span class="key-achievements-icon">🎯</span>
+                                주요 업무 및 성과
+                            </div>
+                            <div class="achievement-list">
+                                <div class="achievement-item">
+                                    타겟 인재상 구체화 및 JD 리브랜딩을 통한 채용 프로세스 최적화
+                                </div>
+                                <div class="achievement-item">
+                                    전사 조직진단을 통한 부서별 맞춤형 평가·보상 체계 설계
+                                </div>
+                                <div class="achievement-item">
+                                    인사 프로세스 자동화를 통한 운영 효율성 개선
+                                </div>
+                                <div class="achievement-item">
+                                    팀별 역량 진단 및 개발 로드맵 수립
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-item">
+                    <div class="career-header">
+                        <div class="company-logo">C</div>
+                        <div class="career-title-block">
+                            <div class="company-name">클래스유</div>
+                            <div class="company-description">교육 콘텐츠 플랫폼 | 10명→63명→30명</div>
+                            <div class="position-title">HR 매니저</div>
+                        </div>
+                        <div class="career-date">2021.11 ~ 2024.11</div>
+                    </div>
+                    <div class="career-content">
+                        <div class="career-summary">
+                            초기 10명 규모에서 63명까지 성장 과정과 30명으로 조직 축소 과정 모두를 경험하며, 스타트업의 인재 확보부터 조직문화 구축, 리텐션 관리까지 HR 전반의 업무를 주도적으로 수행했습니다.
+                        </div>
+                        <div class="key-achievements">
+                            <div class="key-achievements-title">
+                                <span class="key-achievements-icon">🎯</span>
+                                주요 업무 및 성과
+                            </div>
+                            <div class="achievement-list">
+                                <div class="achievement-item">
+                                    스타트업 성장에 필요한 98명의 다양한 직군 인재 확보 (Biz 16명, 콘텐츠 41명, 프로덕트 41명)
+                                </div>
+                                <div class="achievement-item">
+                                    리더급 인재 5명 채용으로 팀 역량 강화 (다이렉트 채용 4명, 내부 추천 1명)
+                                </div>
+                                <div class="achievement-item">
+                                    체계적인 온보딩 프로그램 설계로 신규 입사자의 빠른 적응 지원
+                                </div>
+                                <div class="achievement-item">
+                                    개발팀 리빌딩 후 구성원 1:1 미팅 제도화로 프로덕트팀 100% 리텐션 달성
+                                </div>
+                                <div class="achievement-item">
+                                    반기별 평가 시스템 기획 및 운영으로 공정한 성과 평가 문화 구축
+                                </div>
+                                <div class="achievement-item">
+                                    조직 변화 과정에서의 구성원 케어로 불안감 최소화 및 안정적 전환 지원
+                                </div>
+                                <div class="achievement-item">
+                                    취업규칙 개정 및 노사협의회 운영으로 법적 리스크 관리
+                                </div>
+                                <div class="achievement-item">
+                                    팀 문화 형성을 위한 사내 캠페인(Thx week, 워크샵 등) 기획 및 운영
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-item">
+                    <div class="career-header">
+                        <div class="company-logo">J</div>
+                        <div class="career-title-block">
+                            <div class="company-name">잡온</div>
+                            <div class="company-description">B2B 취업 교육 서비스</div>
+                            <div class="position-title">B2B Sales 인턴</div>
+                        </div>
+                        <div class="career-date">2021.03 ~ 2021.09</div>
+                    </div>
+                    <div class="career-content">
+                        <div class="career-summary">
+                            취업 교육 서비스 회사에서 대학교 대상 B2B 영업 및 교육 프로그램 기획 업무를 담당했습니다.
+                        </div>
+                        <div class="key-achievements">
+                            <div class="key-achievements-title">
+                                <span class="key-achievements-icon">🎯</span>
+                                주요 업무 및 성과
+                            </div>
+                            <div class="achievement-list">
+                                <div class="achievement-item">
+                                    콜드콜 영업의 한계를 인식하고 인바운드 마케팅 전략(뉴스레터) 제안
+                                </div>
+                                <div class="achievement-item">
+                                    3개월간 인바운드 문의 4회 및 계약 성사 2건 달성
+                                </div>
+                                <div class="achievement-item">
+                                    데이터 분석 전문가 자격증(ADsP) 및 Python 교육 프로그램 기획
+                                </div>
+                                <div class="achievement-item">
+                                    대학교 취업지원센터와 협업하여 교육 프로그램 운영
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 프로젝트 섹션 -->
+            <section id="projects" class="content-section">
+                <h2 class="section-title">
+                    <span class="section-icon">🚀</span>
+                    주요 프로젝트
+                </h2>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">모비데이즈 PM 채용 프로젝트</div>
+                            <div class="project-date">2025.02</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p>마케팅 대행사에서 PM(파트너십&미디어) 포지션의 채용 퍼널 전환율이 저조한 문제를 분석하고, JD와 실제 업무 간 기대치 불일치, 주니어 타겟층의 니즈 미충족 등 핵심 과제를 도출하여 개선 전략을 수립하고 실행했습니다.</p>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="project-metric">
+                                    <div class="project-metric-value">240%</div>
+                                    <div class="project-metric-label">면접 전환율 증가</div>
+                                </div>
+                                <div class="project-metric">
+                                    <div class="project-metric-value">173%</div>
+                                    <div class="project-metric-label">아웃바운드 수락률 증가</div>
+                                </div>
+                            </div>
+                            <div class="project-results">
+                                <div class="project-results-title">
+                                    <span class="project-results-icon">✨</span>
+                                    주요 개선 전략
+                                </div>
+                                <ul>
+                                    <li>타겟 인재상 구체화 및 JD 리브랜딩</li>
+                                    <li>성장 로드맵 시각화로 주니어 타겟 니즈 충족</li>
+                                    <li>정산 업무의 가치에 대한 스토리텔링 강화</li>
+                                    <li>채용 콘텐츠 다양화 (팀원 인터뷰, 업무 환경 등)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">클래스유 개발팀 리빌딩</div>
+                            <div class="project-date">2023.08 ~ 2024.10</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p>초기 개발팀의 대규모 퇴사와 팀 정체성 혼란 문제를 해결하기 위해 구성원 1:1 심층 인터뷰를 통한 이슈 파악 후, 팀 정체성 재정립과 맞춤형 평가·보상 체계 수립 등의 전략을 실행했습니다.</p>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="project-metric">
+                                    <div class="project-metric-value">100%</div>
+                                    <div class="project-metric-label">리텐션 달성률</div>
+                                </div>
+                                <div class="project-metric">
+                                    <div class="project-metric-value">15개월</div>
+                                    <div class="project-metric-label">안정적 운영 기간</div>
+                                </div>
+                            </div>
+                            <div class="project-results">
+                                <div class="project-results-title">
+                                    <span class="project-results-icon">✨</span>
+                                    주요 접근 방법
+                                </div>
+                                <ul>
+                                    <li>구성원 1:1 심층 인터뷰를 통한 이슈 파악</li>
+                                    <li>팀 정체성 재정립 (지원 부서 vs. 서비스 개발팀)</li>
+                                    <li>역할별 맞춤형 평가 지표 수립 및 피드백 체계 구축</li>
+                                    <li>개인별 성장 로드맵 설계 및 지원</li>
+                                    <li>팀 내 신뢰 관계 구축을 위한 소통 활성화</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">온보딩 프로세스 고도화</div>
+                            <div class="project-date">2022.05 ~ 2023.06</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p>조직의 빠른 성장으로 인한 신규 입사자의 적응 및 조직 문화 습득 어려움을 해결하기 위해 체계적인 온보딩 프로세스를 설계하고 다양한 지원 제도를 도입했습니다.</p>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="project-metric">
+                                    <div class="project-metric-value">50%</div>
+                                    <div class="project-metric-label">조기 이탈률 감소</div>
+                                </div>
+                                <div class="project-metric">
+                                    <div class="project-metric-value">85%</div>
+                                    <div class="project-metric-label">온보딩 만족도</div>
+                                </div>
+                            </div>
+                            <div class="project-results">
+                                <div class="project-results-title">
+                                    <span class="project-results-icon">✨</span>
+                                    주요 개선 사항
+                                </div>
+                                <ul>
+                                    <li>직무별 온보딩 콘텐츠 개발 (역할, 기대, 성공 사례 등)</li>
+                                    <li>멘토링 프로그램 도입 (직무별 멘토-멘티 매칭)</li>
+                                    <li>부서 OT 및 전사 OT 체계화</li>
+                                    <li>점심메이트 제도 도입으로 다양한 구성원 교류 촉진</li>
+                                    <li>1, 3, 6개월 체크인 미팅으로 적응도 모니터링</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">인사 시스템 도입 및 효율화</div>
+                            <div class="project-date">2022.02 ~ 2023.05</div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-description">
+                                <p>수기로 진행되던 인사 업무의 비효율과 오류 리스크를 줄이기 위해 Flex 시스템을 도입하고, 다양한 인사 프로세스 자동화 방안을 구현했습니다.</p>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="project-metric">
+                                    <div class="project-metric-value">40%</div>
+                                    <div class="project-metric-label">행정업무 시간 감소</div>
+                                </div>
+                                <div class="project-metric">
+                                    <div class="project-metric-value">95%</div>
+                                    <div class="project-metric-label">데이터 정확도</div>
+                                </div>
+                            </div>
+                            <div class="project-results">
+                                <div class="project-results-title">
+                                    <span class="project-results-icon">✨</span>
+                                    주요 개선 사항
+                                </div>
+                                <ul>
+                                    <li>Flex 시스템 도입으로 인사정보 통합 관리</li>
+                                    <li>급여, 원천세, 퇴직연금 자동화</li>
+                                    <li>전자 서명 시스템 도입으로 페이퍼리스 구현</li>
+                                    <li>휴가 관리 및 근태 시스템 자동화</li>
+                                    <li>산업기능요원 관리 프로세스 표준화</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 전문 지식 섹션 -->
+            <section id="expertise" class="content-section">
+                <h2 class="section-title">
+                    <span class="section-icon">📚</span>
+                    전문 지식
+                </h2>
+
+                <div class="knowledge-grid">
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">인재 확보 및 유지</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">채용 전략 및 프로세스 설계</li>
+                            <li class="knowledge-item">다이렉트 소싱 및 인재풀 관리</li>
+                            <li class="knowledge-item">타겟 인재상 정의 및 JD 작성</li>
+                            <li class="knowledge-item">채용 브랜딩 및 콘텐츠 개발</li>
+                            <li class="knowledge-item">면접 기법 및 평가자 교육</li>
+                            <li class="knowledge-item">온보딩 프로그램 설계</li>
+                            <li class="knowledge-item">리텐션 전략 및 이탈 관리</li>
+                            <li class="knowledge-item">오프보딩 및 퇴직자 관리</li>
+                        </ul>
+                    </div>
+
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">조직 개발</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">조직문화 진단 및 개발</li>
+                            <li class="knowledge-item">조직 구조 설계 및 변경 관리</li>
+                            <li class="knowledge-item">팀 빌딩 및 협업 문화 촉진</li>
+                            <li class="knowledge-item">리더십 역량 개발 및 지원</li>
+                            <li class="knowledge-item">변화 관리 전략 수립</li>
+                            <li class="knowledge-item">구성원 역량 진단 및 개발</li>
+                            <li class="knowledge-item">조직 진단 및 개선 방안 도출</li>
+                            <li class="knowledge-item">조직 효율성 및 생산성 향상</li>
+                        </ul>
+                    </div>
+
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">인사 제도 및 정책</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">성과 관리 및 평가 체계 설계</li>
+                            <li class="knowledge-item">보상 체계 및 복리후생 제도</li>
+                            <li class="knowledge-item">직무 분석 및 직급 체계 수립</li>
+                            <li class="knowledge-item">인재 육성 및 경력 개발 제도</li>
+                            <li class="knowledge-item">인사 평가 및 피드백 시스템</li>
+                            <li class="knowledge-item">승진 및 보상 체계 설계</li>
+                            <li class="knowledge-item">취업규칙 및 인사 규정 관리</li>
+                            <li class="knowledge-item">노동법 및 노사관계 관리</li>
+                        </ul>
+                    </div>
+
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">HR 전략 및 운영</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">HR 전략 수립 및 실행</li>
+                            <li class="knowledge-item">HR 데이터 분석 및 활용</li>
+                            <li class="knowledge-item">HR 시스템 도입 및 운영</li>
+                            <li class="knowledge-item">성과 지표(KPI) 설정 및 관리</li>
+                            <li class="knowledge-item">변화 관리 전략 수립 및 실행</li>
+                            <li class="knowledge-item">조직 진단 및 개선 방안 도출</li>
+                            <li class="knowledge-item">HR 업무 효율화 및 자동화</li>
+                            <li class="knowledge-item">조직 규모별 HR 전략 차별화</li>
+                        </ul>
+                    </div>
+
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">스타트업 HR</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">스타트업 성장 단계별 HR 전략</li>
+                            <li class="knowledge-item">빠른 성장 과정의 인재 확보 전략</li>
+                            <li class="knowledge-item">스타트업 조직문화 형성 및 유지</li>
+                            <li class="knowledge-item">제한된 자원 내 효율적 HR 운영</li>
+                            <li class="knowledge-item">스타트업 특화 보상 및 인센티브</li>
+                            <li class="knowledge-item">스타트업 리더십 개발 지원</li>
+                            <li class="knowledge-item">MVP 조직 구성 및 역할 설계</li>
+                            <li class="knowledge-item">스케일업 과정의 조직 변화 관리</li>
+                        </ul>
+                    </div>
+
+                    <div class="knowledge-category">
+                        <h3 class="knowledge-category-title">인사 행정 및 노무</h3>
+                        <ul class="knowledge-list">
+                            <li class="knowledge-item">인사 시스템 운영 및 관리</li>
+                            <li class="knowledge-item">급여 및 세무 관리</li>
+                            <li class="knowledge-item">4대 보험 및 퇴직연금 관리</li>
+                            <li class="knowledge-item">노동법 준수 및 리스크 관리</li>
+                            <li class="knowledge-item">산업기능요원 및 전문연구요원 관리</li>
+                            <li class="knowledge-item">노사협의회 운영</li>
+                            <li class="knowledge-item">법정의무교육 계획 및 실행</li>
+                            <li class="knowledge-item">근로계약서 및 서류 관리</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HR 철학 -->
+                <div class="philosophy-section">
+                    <h3 class="philosophy-title">HR 철학: 10/10/80 모델의 조화로운 성장</h3>
+                    <div class="philosophy-content">
+                        <p>
+                            제가 생각하는 이상적인 조직 구조는 10/10/80의 비율입니다. 조직이 모두 똑같은 역할을 할 때가 아니라, 다양한 역할이 조화를 이룰 때 진정으로 강해진다고 믿습니다.
+                        </p>
+
+                        <div class="model-chart">
+                            <div class="model-segment">
+                                <div class="model-percentage">10%</div>
+                                <div class="model-role">혁신가</div>
+                                <div>조직의 '파이'를 키우는 역할</div>
+                            </div>
+                            <div class="model-segment">
+                                <div class="model-percentage">10%</div>
+                                <div class="model-role">리더십</div>
+                                <div>비전 구체화 및 팀 이끄는 역할</div>
+                            </div>
+                            <div class="model-segment">
+                                <div class="model-percentage">80%</div>
+                                <div class="model-role">전문가</div>
+                                <div>각 영역에서 탁월함을 발휘하는 역할</div>
+                            </div>
+                        </div>
+
+                        <p>
+                            중요한 점은, 이 비율이 고정된 것이 아니라는 겁니다. 한 사람이 상황과 환경에 따라 다른 역할을 맡을 수 있습니다. HR의 역할은 이러한 유동성을 인정하고, 각자가 자신의 강점을 최대한 발휘할 수 있는 환경을 만드는 것입니다.
+                        </p>
+                        <p>
+                            '조직 우선의 시스템'과 '구성원에 대한 따뜻한 시선' 사이의 균형을 추구하며, 조직의 성공과 구성원의 성장이 함께 가는 지속 가능한 HR 환경을 만들고자 합니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 학력 섹션 -->
+            <section id="education" class="content-section">
+                <h2 class="section-title">
+                    <span class="section-icon">🎓</span>
+                    학력
+                </h2>
+
+                <div class="education-card">
+                    <div class="education-title">홍익대학교</div>
+                    <div class="education-subtitle">경영학과 학사</div>
+                    <div class="education-date">2017.03 - 2022.02</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 푸터 -->
+        <footer class="resume-footer">
+            <div>© 2025 김한슬 - HR Business Partner</div>
+            <div class="footer-links">
+                <a href="mailto:staur0301@naver.com" class="footer-link">
+                    <span class="footer-link-icon">✉️</span>
+                    이메일
+                </a>
+                <a href="tel:+821083701995" class="footer-link">
+                    <span class="footer-link-icon">📱</span>
+                    연락처
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 페이지 내 스크롤 이동을 부드럽게 처리
+        document.querySelectorAll('.nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+                
+                // 현재 활성화된 탭 변경
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // 스크롤 위치에 따라 네비게이션 활성화 상태 변경
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY + 100;
+            
+            document.querySelectorAll('.content-section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const currentId = section.getAttribute('id');
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === '#' + currentId) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
